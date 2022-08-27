@@ -1,0 +1,92 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "fragments/common :: head('게시판')">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Custom styles for this template -->
+    <link  href="../static/css/style.css" >
+    <!-- Bootstrap CSS-->
+    <link href ="../static/css/bootstrap.min.css" th:href = "@{css/bootstrap.min.css}" rel = "stylesheet" type ="text/css">
+    <link href ="../static/css/starter.css">
+    <title>게시판</title>
+</head>
+<body class="d-flex flex-column h-100">
+<header>
+    <!-- Fixed navbar can be replaced by common.html when rendering thorugh the server by using thymeleaf engine -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" th:replace ="../templates/fragments/common :: menu('user')">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" th:text ="Spring Project">Footer</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">바우처 목록</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">고객
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+ Begin page content
+<main class="flex-shrink-0">
+    <div class="container">
+        <h2 class="mt-5">바우처 목록</h2>
+<!--        <div>총 건수 : <span th:text="${users.totalElements}"></span></div>-->
+        <form class="row g-3 d-flex justify-content-end" method="get" th:action="@{/vouchers}">
+            <div class="col-auto">
+                <label for="searchText" class="visually-hidden">검색</label>
+                <input type="text" class="form-control" id="searchText" name ="searchText" th:value="${param.searchText}">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-light mb-3">검색</button>
+            </div>
+        </form>
+        <table class="table">
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">type</th>
+                <th scope="col">discountInfo</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="voucher : ${vouchers}">
+<!--                <td th:text="${user.id}">Onions</td>-->
+                <td th:text="${voucher.id}"> a1239898-dskfjdlk33-sdjflsk</td>
+                <td th:text="${voucher.type}"> FIXED</td>
+                <td th:text="${voucher.discountInfo}"> 1000</td>
+            </tr>
+            </tbody>
+        </table>
+<!--        <nav aria-label="Page navigation example">-->
+<!--            <ul class="pagination justify-content-center">-->
+<!--                <li class="page-item " th:classappend="${users.hasPrevious()}? 'disabled'">-->
+<!--                    <a class="page-link" href="#" th:href="@{/users/list/v2(page=${users.pageable.pageNumber - 1},searchText=${param.searchText})}" tabindex="-1" aria-disabled="true">Previous</a>-->
+<!--                </li>-->
+<!--&lt;!&ndash;                <li class="page-item " th:classappend="${i == users.pageable.pageNumber+1}?'disabled'" th:each="i: ${#numbers.sequence(startPage,endPage)}">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a class="page-link" href="#" th:text="${i}" th:href="@{/users/list(page=${i - 1},searchText=${param.searchText})}">1</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--                <li class="page-item " th:classappend="${users.hasNext()}? 'disabled'">-->
+<!--&lt;!&ndash;                "${users.totalPages == users.pageable.pageNumber+1} ?'disabled'">&ndash;&gt;-->
+<!--                    <a class="page-link" href="#" th:href="@{/users/list/v2(page=${users.pageable.pageNumber + 1},searchText=${param.searchText})}">Next</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </nav>-->
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a type="button" class="btn btn-primary" th:href="@{/vouchers/register}" >바우처 발급</a>
+        </div>
+    </div>
+</main>
+
+
+</body>
+</html>

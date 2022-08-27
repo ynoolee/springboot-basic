@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<!-- Navigation Bar를 fragment화 -->
+<head th:fragment = "head(title)">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/style.css" rel = "stylesheet"  th:href="@{/css/style.css}">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href ="../static/starter-template.css" th:href = "@{/css/starter.css}" rel = "stylesheet">
+
+    <title th:text ="${title}">Voucher</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" th:fragment ="menu(menu_name)">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" th:href="@{/vouchers}">Voucher</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#" th:href = "@{/vouchers}" th:classappend="${menu_name} == '바우처 목록'?'active'">바우처 목록<span class = "sr-only" th:if="${menu_name} == '바우처 목록'"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"th:href = "@{/customers}" th:classappend="${menu_name} == '고객' ? 'active'">고객<span class = "sr-only" th:if="${menu_name} == '고객'"></span></a>
+                </li>
+            </ul>
+
+<!--            &lt;!&ndash;<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">&ndash;&gt;-->
+<!--            <a class="btn btn-outline-success d-flex mr-2" th:href="@{/account/login}"-->
+<!--               sec:authorize="!isAuthenticated()">Login</a>-->
+<!--            <a class="btn btn-outline-success d-flex" th:href="@{/account/register}"-->
+<!--               sec:authorize="!isAuthenticated()">회원가입</a>-->
+<!--            <form class="d-flex" sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">-->
+<!--                <span class="text-white" sec:authentication="name">사용자</span>-->
+<!--                <span class="text-white mx-2" sec:authentication="principal.authorities">권한</span>-->
+<!--                &lt;!&ndash;<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">&ndash;&gt;-->
+<!--                <button class="btn btn-outline-success" type="submit">Logout</button>-->
+<!--            </form>-->
+        </div>
+
+    </div>
+</nav>
+</body>
+</html>
