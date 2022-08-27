@@ -9,7 +9,7 @@ import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -19,7 +19,7 @@ import com.prgrms.vouchermanagement.voucher.VoucherType;
 import com.prgrms.vouchermanagement.voucher.domain.Voucher;
 
 @Repository
-@Primary
+@Profile("!dev")
 public class VoucherJdbcRepository implements VoucherRepository {
 	private final Logger logger = LoggerFactory.getLogger(VoucherJdbcRepository.class);
 	private final JdbcTemplate jdbcTemplate;

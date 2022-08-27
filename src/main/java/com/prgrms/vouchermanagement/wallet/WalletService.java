@@ -3,6 +3,7 @@ package com.prgrms.vouchermanagement.wallet;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
@@ -13,6 +14,7 @@ import com.prgrms.vouchermanagement.customer.service.CustomerService;
 import com.prgrms.vouchermanagement.voucher.VoucherService;
 import com.prgrms.vouchermanagement.voucher.domain.Voucher;
 
+@Service
 public class WalletService {
 	private final WalletJdbcRepository walletRepository;
 	private final CustomerService customerService;

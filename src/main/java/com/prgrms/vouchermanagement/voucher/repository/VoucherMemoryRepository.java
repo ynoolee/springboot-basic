@@ -9,12 +9,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import com.prgrms.vouchermanagement.commons.exception.UpdateFailException;
 import com.prgrms.vouchermanagement.voucher.domain.Voucher;
 
 @Repository
+@Profile("dev")
 public class VoucherMemoryRepository implements VoucherRepository {
 	private final Map<UUID, Voucher> storage = new ConcurrentHashMap<>();
 	private final Logger logger = LoggerFactory.getLogger(VoucherMemoryRepository.class);

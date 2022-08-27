@@ -18,6 +18,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	runtimeOnly group: 'com.h2database', name: 'h2', version: '2.1.214'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
